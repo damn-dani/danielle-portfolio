@@ -534,29 +534,51 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 /* ─── RESPONSIVE ──────────────────────────────────── */
 @media(max-width:960px){
   #hero{grid-template-columns:1fr;min-height:auto}
-  .hero-img{min-height:52vw;max-height:480px}
+  .hero-img{min-height:56vw;max-height:420px}
+  .hero-img::after{background:linear-gradient(to bottom,transparent 60%,var(--cream) 100%)}
   .svc-head{grid-template-columns:1fr}
   .svc-grid{grid-template-columns:1fr 1fr}
   .proc-head{grid-template-columns:1fr;gap:24px}
   .proc-grid{grid-template-columns:1fr}
   .case{grid-template-columns:1fr}
   .case-reading .case-body{order:0}
-  .case-vis{min-height:280px}
+  .case-vis{min-height:260px}
   .bg-grid{grid-template-columns:1fr;gap:48px}
   .gal-grid{grid-template-columns:1fr 1fr}
   footer{justify-content:center;text-align:center}
+  .logo-strip{flex-direction:column;align-items:stretch}
+  .logo-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding:20px 24px}
+  .logo-item:last-child{border-bottom:none}
 }
 @media(max-width:600px){
   .nav-list{display:none}
+  .hero-h1{font-size:clamp(48px,13vw,80px)}
+  .hero-img{min-height:220px;max-height:280px}
+  .hero-copy{padding:36px 24px 48px}
+  .hero-pos{font-size:18px;margin-bottom:32px}
+  .hero-cta{padding:12px 28px}
   .svc-grid{grid-template-columns:1fr}
+  .svc-head{margin-bottom:36px}
   .flow{grid-template-columns:1fr 1fr;row-gap:36px}
   .flow::before{display:none}
+  .pstep{padding:32px 24px}
   .work-head{flex-direction:column;align-items:flex-start}
   .work-note{text-align:left;max-width:100%}
+  .case-body{padding:32px 24px}
+  .case-vis{padding:32px 24px;min-height:200px}
+  .ba-wrap{max-width:100%}
   .gal-head{flex-direction:column;align-items:flex-start}
   .gal-grid{grid-template-columns:1fr}
   .cert-grid{grid-template-columns:1fr}
+  .logo-name{font-size:18px}
   .contact-h2{font-size:clamp(44px,12vw,72px)}
+  .pills{gap:8px}
+  .pill{font-size:9px;padding:6px 12px}
+  .cta-row{flex-direction:column}
+  .btn-cream,.btn-ghost{text-align:center}
+  .ideation-h3{font-size:clamp(40px,11vw,64px)}
+  .ideation-bottom{grid-template-columns:1fr;gap:24px}
+  .ideation-right{flex-direction:column;align-items:flex-start;gap:12px}
 }
   </style>
 </head>
@@ -570,8 +592,8 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
     <li><a href="#process">Process</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#background">About</a></li>
-    <li><a href="#contact" class="nav-cta">Let's talk</a></li>
   </ul>
+  <a href="#contact" class="nav-cta">Let's talk</a>
 </nav>
 
 <!-- ═══ HERO ═══════════════════════════════════════════ -->
