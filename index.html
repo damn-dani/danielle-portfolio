@@ -545,40 +545,57 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
   .case-vis{min-height:260px}
   .bg-grid{grid-template-columns:1fr;gap:48px}
   .gal-grid{grid-template-columns:1fr 1fr}
+  .gal-head{flex-direction:column;align-items:flex-start;gap:16px}
   footer{justify-content:center;text-align:center}
   .logo-strip{flex-direction:column;align-items:stretch}
   .logo-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding:20px 24px}
   .logo-item:last-child{border-bottom:none}
+  .ideation-feature{padding:clamp(48px,7vw,96px) var(--g)}
 }
 @media(max-width:600px){
   .nav-list{display:none}
-  .hero-h1{font-size:clamp(48px,13vw,80px)}
+  /* hero */
+  .hero-h1{font-size:clamp(44px,12vw,72px)}
   .hero-img{min-height:220px;max-height:280px}
-  .hero-copy{padding:36px 24px 48px}
-  .hero-pos{font-size:18px;margin-bottom:32px}
+  .hero-copy{padding:32px 20px 44px}
+  .hero-pos{font-size:17px;margin-bottom:28px;max-width:100%}
   .hero-cta{padding:12px 28px}
+  .hero-loc{font-size:9px}
+  /* section headings */
+  .h2{font-size:clamp(34px,9vw,56px)}
+  /* services */
   .svc-grid{grid-template-columns:1fr}
-  .svc-head{margin-bottom:36px}
+  .svc-head{margin-bottom:32px}
+  .svc-sub{max-width:100%}
+  /* process */
   .flow{grid-template-columns:1fr 1fr;row-gap:36px}
   .flow::before{display:none}
-  .pstep{padding:32px 24px}
+  .pstep{padding:28px 20px}
+  .proc-intro{max-width:100%}
+  /* work */
   .work-head{flex-direction:column;align-items:flex-start}
   .work-note{text-align:left;max-width:100%}
-  .case-body{padding:32px 24px}
-  .case-vis{padding:32px 24px;min-height:200px}
+  .case-body{padding:28px 20px}
+  .case-vis{padding:28px 20px;min-height:180px}
+  .fanta-row{grid-template-columns:1fr}
   .ba-wrap{max-width:100%}
-  .gal-head{flex-direction:column;align-items:flex-start}
+  /* ideation */
+  .ideation-feature{padding:48px 20px}
+  .ideation-h3{font-size:clamp(36px,10vw,56px)}
+  .ideation-bottom{grid-template-columns:1fr;gap:24px}
+  .ideation-right{flex-direction:column;align-items:flex-start;gap:12px}
+  /* gallery */
   .gal-grid{grid-template-columns:1fr}
+  /* background */
   .cert-grid{grid-template-columns:1fr}
   .logo-name{font-size:18px}
-  .contact-h2{font-size:clamp(44px,12vw,72px)}
+  /* contact */
+  .contact-h2{font-size:clamp(40px,11vw,64px)}
+  .contact-sub{font-size:16px}
   .pills{gap:8px}
   .pill{font-size:9px;padding:6px 12px}
   .cta-row{flex-direction:column}
-  .btn-cream,.btn-ghost{text-align:center}
-  .ideation-h3{font-size:clamp(40px,11vw,64px)}
-  .ideation-bottom{grid-template-columns:1fr;gap:24px}
-  .ideation-right{flex-direction:column;align-items:flex-start;gap:12px}
+  .btn-cream,.btn-ghost{text-align:center;width:100%}
 }
   </style>
 </head>
