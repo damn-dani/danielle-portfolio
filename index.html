@@ -534,8 +534,9 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 /* ─── RESPONSIVE ──────────────────────────────────── */
 @media(max-width:960px){
   #hero{grid-template-columns:1fr;min-height:auto}
-  .hero-img{min-height:56vw;max-height:420px}
-  .hero-img::after{background:linear-gradient(to bottom,transparent 60%,var(--cream) 100%)}
+  .hero-img{min-height:unset;max-height:none;aspect-ratio:4/5}
+  .hero-img img{object-position:center 15%}
+  .hero-img::after{display:none}
   .svc-head{grid-template-columns:1fr}
   .svc-grid{grid-template-columns:1fr 1fr}
   .proc-head{grid-template-columns:1fr;gap:24px}
@@ -556,7 +557,7 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
   .nav-list{display:none}
   /* hero */
   .hero-h1{font-size:clamp(44px,12vw,72px)}
-  .hero-img{min-height:220px;max-height:280px}
+  .hero-img{aspect-ratio:3/4}
   .hero-copy{padding:32px 20px 44px}
   .hero-pos{font-size:17px;margin-bottom:28px;max-width:100%}
   .hero-cta{padding:12px 28px}
