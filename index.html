@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danielle Naidu — Social Media Strategist</title>
+  <meta name="description" content="Danielle Naidu — Social Media Strategist & Content Manager. Strategy, content systems, and campaign ideation for brands with a point of view." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <style>
+
+/* ─── TOKENS ──────────────────────────────────────── */
+:root {
+  --cream:   #F7F3EE;
+  --cream2:  #EEE9E1;
+  --green:   #171717;
+  --green2:  #252525;
+  --ink:     #111111;
+  --ink2:    #222222;
+  --orange:  #8B5CF6;
+  --muted:   #7A7468;
+  --border:  rgba(17,17,17,0.1);
+  --dborder: rgba(255,255,255,0.08);
+  --serif:   'Cormorant Garamond', Georgia, serif;
+  --sans:    'DM Sans', system-ui, sans-serif;
+  --max:     1120px;
+  --g:       clamp(24px, 5vw, 72px);
+  --s:       clamp(72px, 9vw, 128px);
+  --card-r:  4px;
+  --card-sh: 0 4px 32px rgba(0,0,0,0.1);
+}
+
+/* ─── RESET ───────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;font-weight:300;line-height:1.72;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ─── REVEAL ──────────────────────────────────────── */
+.r{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.r.on{opacity:1;transform:none}
+.r1{transition-delay:.08s}.r2{transition-delay:.16s}.r3{transition-delay:.24s}.r4{transition-delay:.32s}
+
+/* ─── NAV ─────────────────────────────────────────── */
+#nav{
+  position:fixed;inset:0 0 auto 0;z-index:200;
+  height:58px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--g);
+  background:rgba(247,243,238,.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;color:var(--ink)}
+.nav-list{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-list a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:400;transition:color .2s}
+.nav-list a:hover{color:var(--ink)}
+.nav-cta{padding:7px 20px;background:var(--green);color:var(--cream)!important;font-weight:500!important;transition:background .2s!important}
+.nav-cta:hover{background:var(--green2)!important}
+
+/* ─── HERO ────────────────────────────────────────── */
+#hero{min-height:100svh;display:grid;grid-template-columns:1fr 1fr;padding-top:58px}
+
+.hero-img{
+  background:var(--green);
+  overflow:hidden;position:relative;
+  min-height:480px;
+}
+.hero-img img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+}
+.hero-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,transparent 60%,var(--green) 100%);
+}
+
+.hero-copy{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(48px,6vw,96px) clamp(36px,4vw,72px);
+  background:var(--cream);
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--orange);font-weight:500;margin-bottom:28px;
+}
+.hero-eyebrow::before{content:'';width:28px;height:1.5px;background:var(--orange);flex-shrink:0}
+
+.hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(64px,9vw,128px);
+  font-weight:700;line-height:.88;
+  letter-spacing:-.02em;color:var(--ink);
+}
+.hero-h1 em{font-style:italic;color:var(--green)}
+
+.hero-rule{width:48px;height:2px;background:var(--orange);margin:28px 0}
+
+.hero-role{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.hero-pos{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(20px,2.2vw,26px);color:var(--ink);
+  line-height:1.45;max-width:400px;margin-bottom:44px;
+}
+.hero-cta{
+  align-self:flex-start;
+  padding:14px 38px;background:var(--ink);color:var(--cream);
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;
+  border:none;cursor:pointer;transition:background .25s;display:inline-block;
+}
+.hero-cta:hover{background:var(--orange)}
+.hero-loc{margin-top:32px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+/* ─── SHARED ──────────────────────────────────────── */
+.wrap{padding:var(--s) var(--g)}
+.inner{max-width:var(--max);margin:0 auto}
+
+.eyebrow{
+  display:flex;align-items:center;gap:12px;
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;
+  margin-bottom:20px;
+}
+.eyebrow::before{content:'';width:24px;height:1.5px;flex-shrink:0}
+.eo{color:var(--orange)}.eo::before{background:var(--orange)}
+.eg{color:var(--green)}.eg::before{background:var(--green)}
+.el{color:rgba(255,255,255,.38)}.el::before{background:rgba(255,255,255,.3)}
+
+.h2{
+  font-family:var(--serif);
+  font-size:clamp(44px,5.5vw,76px);
+  font-weight:700;line-height:.98;letter-spacing:-.02em;
+}
+.h2 em{font-style:italic}
+
+/* image card — every work image uses this */
+.card{
+  border-radius:var(--card-r);
+  box-shadow:var(--card-sh);
+  overflow:hidden;
+}
+
+/* ─── MARQUEE ─────────────────────────────────────── */
+.marquee-strip{
+  background:var(--green);overflow:hidden;
+  padding:14px 0;border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.marquee-track{
+  display:flex;width:max-content;
+  animation:marquee 28s linear infinite;
+}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{
+  white-space:nowrap;padding:0 40px;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);font-weight:400;
+}
+.marquee-item span{color:var(--orange);margin:0 8px}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ─── BEFORE/AFTER ─────────────────────────────────── */
+.ba-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  width:100%;max-width:460px;
+}
+.ba-card{display:flex;flex-direction:column;gap:8px}
+.ba-label{
+  font-size:8px;letter-spacing:.28em;text-transform:uppercase;
+  font-weight:500;text-align:center;
+}
+.ba-label.before{color:rgba(255,255,255,.25)}
+.ba-label.after{color:var(--orange)}
+.ba-card .card{border-radius:var(--card-r);overflow:hidden;box-shadow:var(--card-sh)}
+.ba-card .card img{width:100%;display:block}
+.ba-card.after-card .card{outline:1.5px solid var(--orange)}
+
+/* ─── COUNTERS ─────────────────────────────────────── */
+.metric[data-target]{transition:none}
+
+/* ─── SERVICES ────────────────────────────────────── */
+#services{background:var(--cream);position:relative;overflow:hidden}
+.svc-head{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:flex-end;margin-bottom:56px}
+.svc-sub{font-size:17px;color:var(--muted);line-height:1.75;max-width:380px}
+
+.svc-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--border);border-left:1px solid var(--border);
+}
+.svc-item{
+  padding:36px 28px;
+  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+  transition:background .3s;cursor:default;
+}
+.svc-item:hover{background:var(--green)}
+.svc-item:hover .svc-n{color:rgba(255,255,255,.04)}
+.svc-item:hover .svc-bar{background:var(--orange)}
+.svc-item:hover .svc-t{color:var(--cream)}
+.svc-item:hover .svc-p{color:rgba(255,255,255,.38)}
+
+.svc-n{font-family:var(--serif);font-size:64px;font-weight:900;line-height:1;color:rgba(20,20,20,.05);margin-bottom:-8px;transition:color .3s}
+.svc-bar{width:24px;height:2px;background:var(--green);margin-bottom:16px;transition:background .3s}
+.svc-t{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.2;transition:color .3s}
+.svc-p{font-size:15px;color:var(--muted);line-height:1.8;transition:color .3s}
+
+/* ─── PROCESS ─────────────────────────────────────── */
+#process{background:var(--green)}
+
+.proc-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:flex-end;margin-bottom:64px}
+.proc-intro{font-size:17px;color:rgba(255,255,255,.42);line-height:1.75;max-width:380px}
+
+/* horizontal flow graphic */
+.flow{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  position:relative;margin-bottom:56px;
+}
+.flow::before{
+  content:'';position:absolute;
+  top:27px;left:calc(12.5% + 4px);right:calc(12.5% + 4px);
+  height:1px;background:rgba(255,255,255,.12);
+}
+.flow-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px}
+.flow-node{
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:18px;font-weight:700;color:var(--cream);
+  position:relative;z-index:1;margin-bottom:16px;flex-shrink:0;
+}
+.flow-node-active{background:var(--orange);border-color:var(--orange)}
+.flow-label{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--cream);margin-bottom:6px}
+.flow-sub{font-size:13px;color:rgba(255,255,255,.38);letter-spacing:.04em;line-height:1.5}
+
+/* step detail cards */
+.proc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.pstep{background:rgba(0,0,0,.2);padding:44px 40px;position:relative;overflow:hidden}
+.pstep-ghost{
+  position:absolute;top:-16px;right:8px;
+  font-family:var(--serif);font-size:120px;font-weight:900;
+  color:rgba(255,255,255,.025);line-height:1;pointer-events:none;user-select:none;
+}
+.pstep-n{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;font-weight:500}
+.pstep-t{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--cream);margin-bottom:12px;line-height:1.15}
+.pstep-p{font-size:15px;color:rgba(255,255,255,.38);line-height:1.8}
+
+/* ─── CASE STUDIES ────────────────────────────────── */
+#work{background:var(--cream);padding:var(--s) 0}
+.work-head{
+  padding:0 var(--g) 56px;
+  max-width:calc(var(--max) + var(--g)*2);margin:0 auto;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+}
+.work-note{font-size:14px;color:var(--muted);line-height:1.7;max-width:260px;text-align:right}
+
+/* generic case wrapper */
+.case{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.case+.case{border-top:1px solid var(--border)}
+
+.case-vis{
+  display:flex;align-items:center;justify-content:center;
+  padding:52px 44px;position:relative;
+}
+.case-vis .card{width:100%;max-width:480px}
+.case-vis .card img{width:100%;display:block}
+
+.case-tag{
+  position:absolute;top:22px;left:22px;
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;
+  padding:5px 12px;border-radius:2px;
+}
+
+.case-body{
+  padding:clamp(40px,5vw,68px) clamp(32px,4vw,60px);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.case-org{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.case-h3{
+  font-family:var(--serif);
+  font-size:clamp(36px,4.2vw,62px);font-weight:700;line-height:.92;
+  margin-bottom:36px;
+}
+.case-h3 em{font-style:italic}
+
+.case-row{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid}
+.case-row:last-of-type{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.case-lbl{font-size:10px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;margin-bottom:6px}
+.case-txt{font-size:15px;line-height:1.82}
+
+.metric{
+  display:inline-block;padding:3px 10px;
+  font-size:11px;letter-spacing:.05em;font-weight:500;
+  margin-bottom:8px;border-radius:2px;
+}
+
+.case-link{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:28px;padding:11px 24px;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  border:1.5px solid currentColor;
+  transition:background .22s,color .22s;
+}
+.case-fanta .case-link:hover{background:var(--ink);color:var(--cream)}
+.case-reading .case-link:hover{background:var(--orange);color:var(--green)}
+
+/* fanta */
+.case-fanta .case-vis{background:#0A0A0A}
+.case-fanta .case-tag{background:var(--orange);color:#fff}
+.case-fanta .case-body{background:var(--cream2)}
+.case-fanta .case-h3{color:var(--ink)}.case-fanta .case-h3 em{color:var(--orange)}
+.case-fanta .case-row{border-color:var(--border)}
+.case-fanta .case-lbl{color:var(--orange)}
+.case-fanta .case-txt{color:#5a5248}
+.case-fanta .metric{background:#f0eaff;color:var(--orange)}
+.case-fanta .case-link{color:var(--ink);border-color:var(--ink)}
+
+/* fanta: second smaller image below main */
+.fanta-imgs{display:flex;flex-direction:column;gap:12px;width:100%;max-width:480px}
+.fanta-imgs .card-main img{width:100%}
+.fanta-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fanta-row .card img{width:100%;aspect-ratio:1/1;object-fit:cover}
+
+/* reading */
+.case-reading .case-body{background:var(--green);order:-1}
+.case-reading .case-vis{background:#0A0A0A}
+.case-reading .case-tag{background:var(--orange);color:#fff}
+.case-reading .case-org{color:rgba(255,255,255,.3)}
+.case-reading .case-h3{color:var(--cream)}.case-reading .case-h3 em{color:var(--orange)}
+.case-reading .case-row{border-color:rgba(255,255,255,.07)}
+.case-reading .case-lbl{color:var(--orange)}
+.case-reading .case-txt{color:rgba(255,255,255,.45)}
+.case-reading .metric{background:rgba(139,92,246,.18);color:var(--orange)}
+.case-reading .case-link{color:var(--orange);border-color:var(--orange)}
+.case-reading .case-vis .card{max-width:300px}
+.case-reading .case-vis .card img{filter:drop-shadow(0 12px 40px rgba(139,92,246,.2))}
+
+/* ideation feature */
+.ideation-feature{
+  position:relative;overflow:hidden;border-top:none;
+  background:var(--ink);
+  padding:clamp(72px,9vw,128px) var(--g);
+}
+.ideation-ghost{
+  position:absolute;bottom:-0.15em;left:50%;transform:translateX(-50%);
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:clamp(180px,28vw,420px);line-height:1;white-space:nowrap;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.035);
+  pointer-events:none;user-select:none;letter-spacing:-.03em;z-index:0;
+}
+.ideation-inner{
+  max-width:var(--max);margin:0 auto;
+  position:relative;z-index:1;
+}
+.ideation-left{ margin-bottom:0; }
+.ideation-copy{ text-align:center; }
+.ideation-h3{
+  font-family:var(--serif);
+  font-size:clamp(52px,8vw,110px);font-weight:700;line-height:.9;
+  color:var(--cream);letter-spacing:-.03em;
+  margin-bottom:36px;
+}
+.ideation-h3 em{font-style:italic;color:var(--orange)}
+.ideation-divider{
+  width:100%;height:1px;
+  background:rgba(255,255,255,.08);
+  margin-bottom:40px;
+}
+.ideation-bottom{
+  display:grid;grid-template-columns:1fr auto;
+  align-items:center;gap:40px;
+}
+.ideation-p{font-size:16px;color:rgba(255,255,255,.38);line-height:1.82;max-width:540px}
+.ideation-right{display:flex;align-items:center;gap:20px;flex-shrink:0}
+.ideation-right-label{
+  font-size:9px;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);text-align:right;line-height:1.6;
+}
+.ideation-right-title{display:none}
+.ideation-cta{
+  display:inline-block;padding:14px 36px;
+  background:transparent;color:var(--cream);
+  border:1.5px solid rgba(255,255,255,.3);
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  transition:background .22s,border-color .22s,color .22s;white-space:nowrap;
+}
+.ideation-cta:hover{background:var(--orange);border-color:var(--orange);color:var(--green)}
+@media(max-width:768px){
+  .ideation-bottom{grid-template-columns:1fr;gap:28px}
+  .ideation-right{justify-content:flex-start}
+}
+
+/* more-work strip */
+.more-work{
+  text-align:center;padding:32px var(--g);
+  background:var(--cream2);border-top:1px solid var(--border);
+}
+.more-work a{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  color:var(--ink);padding:10px 28px;border:1.5px solid var(--border);
+  transition:border-color .22s,color .22s;
+}
+.more-work a:hover{color:var(--orange);border-color:var(--orange)}
+
+/* ─── GALLERY ─────────────────────────────────────── */
+#gallery{background:var(--cream);position:relative;overflow:hidden}
+.gal-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;gap:24px}
+.gal-link{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  color:var(--orange);padding:10px 22px;border:1.5px solid var(--orange);
+  transition:background .22s,color .22s;
+}
+.gal-link:hover{background:var(--orange);color:var(--cream)}
+
+.gal-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.gitem{
+  overflow:hidden;position:relative;
+  border-radius:var(--card-r);box-shadow:var(--card-sh);
+  background:var(--cream2);aspect-ratio:3/4;
+}
+.gitem img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .55s ease}
+.gitem:hover img{transform:scale(1.04)}
+.glabel{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:48px 18px 18px;
+  background:linear-gradient(transparent,rgba(0,0,0,.52));
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.85);font-weight:500;
+}
+
+/* ─── LOGO STRIP ──────────────────────────────────── */
+.logo-strip{
+  display:flex;align-items:center;gap:0;
+  margin:48px 0 64px;
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.logo-item{
+  flex:1;padding:28px 24px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid rgba(255,255,255,.08);
+  transition:background .25s;
+}
+.logo-item:last-child{border-right:none}
+.logo-item:hover{background:rgba(255,255,255,.03)}
+.logo-eyebrow{font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:8px}
+.logo-name{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--cream);line-height:1;letter-spacing:-.01em}
+.logo-sub{font-size:11px;color:rgba(255,255,255,.3);margin-top:5px;line-height:1.4}
+
+/* ─── BACKGROUND ──────────────────────────────────── */
+#background{background:#171717}
+
+.bg-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;margin-top:56px}
+
+.tl{display:flex;flex-direction:column}
+.tl-item{padding:26px 0 26px 34px;border-left:1px solid rgba(255,255,255,.1);position:relative}
+.tl-item::before{
+  content:'';position:absolute;left:-5px;top:30px;
+  width:9px;height:9px;border-radius:50%;background:var(--orange);
+}
+.tl-date{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:7px;font-weight:500}
+.tl-t{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--cream);margin-bottom:7px;line-height:1.2}
+.tl-note{font-style:italic;color:var(--orange);font-size:17px}
+.tl-p{font-size:15px;color:rgba(255,255,255,.32);line-height:1.8}
+
+.cert-lbl{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:18px}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.cert-card{
+  display:block;background:#242424;padding:24px 20px;
+  border-bottom:2px solid transparent;transition:border-color .2s,background .2s;
+}
+.cert-card:hover{border-color:var(--orange);background:#2E2E2E}
+.cert-issuer{font-size:8px;letter-spacing:.26em;text-transform:uppercase;color:var(--orange);margin-bottom:7px;font-weight:500}
+.cert-name{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--cream);line-height:1.3}
+.cert-arr{display:block;margin-top:12px;font-size:14px;color:rgba(255,255,255,.15);transition:color .2s}
+.cert-card:hover .cert-arr{color:var(--orange)}
+
+/* ─── CONTACT ─────────────────────────────────────── */
+#contact{background:var(--green);position:relative;overflow:hidden}
+.contact-ghost{
+  position:absolute;
+  bottom:-0.18em;left:-0.04em;
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:clamp(180px,28vw,380px);
+  line-height:1;white-space:nowrap;
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(139,92,246,.5);
+  pointer-events:none;user-select:none;letter-spacing:-.03em;
+}
+/* section ghost words */
+.sec-ghost{
+  position:absolute;
+  bottom:-0.15em;right:-0.04em;
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:clamp(140px,22vw,300px);
+  line-height:1;white-space:nowrap;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(139,92,246,.12);
+  pointer-events:none;user-select:none;letter-spacing:-.03em;
+  z-index:0;
+}
+.contact-wrap{max-width:700px;position:relative;z-index:1}
+.contact-h2{
+  font-family:var(--serif);
+  font-size:clamp(64px,9.5vw,124px);
+  font-weight:700;line-height:.86;letter-spacing:-.025em;
+  color:var(--cream);margin-bottom:28px;
+}
+.contact-h2 em{font-style:italic}
+.contact-sub{font-size:19px;color:rgba(255,255,255,.55);line-height:1.75;max-width:480px;margin-bottom:36px}
+.pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.pill{padding:7px 16px;border:1.5px solid rgba(255,255,255,.3);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn-cream{display:inline-block;padding:13px 38px;background:var(--cream);color:var(--green);font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;transition:background .2s,color .2s}
+.btn-cream:hover{background:var(--ink);color:var(--cream)}
+.btn-ghost{display:inline-block;padding:13px 38px;border:1.5px solid rgba(255,255,255,.38);color:rgba(255,255,255,.8);font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;transition:background .2s}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7)}
+
+/* ─── FOOTER ──────────────────────────────────────── */
+footer{background:var(--ink);padding:24px var(--g);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid rgba(255,255,255,.05)}
+footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
+
+/* ─── PRINT ───────────────────────────────────────── */
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  #nav{display:none}
+  .r{opacity:1!important;transform:none!important;transition:none!important}
+  #hero{padding-top:0;min-height:auto}
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────── */
+@media(max-width:960px){
+  #hero{grid-template-columns:1fr;min-height:auto}
+  .hero-img{min-height:52vw;max-height:480px}
+  .svc-head{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .proc-head{grid-template-columns:1fr;gap:24px}
+  .proc-grid{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr}
+  .case-reading .case-body{order:0}
+  .case-vis{min-height:280px}
+  .bg-grid{grid-template-columns:1fr;gap:48px}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  footer{justify-content:center;text-align:center}
+}
+@media(max-width:600px){
+  .nav-list{display:none}
+  .svc-grid{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr 1fr;row-gap:36px}
+  .flow::before{display:none}
+  .work-head{flex-direction:column;align-items:flex-start}
+  .work-note{text-align:left;max-width:100%}
+  .gal-head{flex-direction:column;align-items:flex-start}
+  .gal-grid{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:1fr}
+  .contact-h2{font-size:clamp(44px,12vw,72px)}
+}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" aria-label="Main navigation">
+  <a class="nav-logo" href="#hero">Danielle Naidu</a>
+  <ul class="nav-list">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#background">About</a></li>
+    <li><a href="#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-img">
+    <img src="assets/hero.jpg" alt="Danielle Naidu" />
+  </div>
+  <div class="hero-copy">
+    <p class="hero-eyebrow r">Social Media Strategist &amp; Content Manager</p>
+    <h1 class="hero-h1 r r1">Danielle<br /><em>Naidu.</em></h1>
+    <div class="hero-rule r r2"></div>
+    <p class="hero-role r r2">The Strategist.</p>
+    <p class="hero-pos r r3">"I work with brands who need more than content. They need a point of view."</p>
+    <a href="#contact" class="hero-cta r r4">Let's work together</a>
+    <p class="hero-loc r r4">Sandton, South Africa &nbsp;·&nbsp; Remote &nbsp;·&nbsp; Open to relocation</p>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Content Strategy<span>·</span></span>
+    <span class="marquee-item">Campaign Ideation<span>·</span></span>
+    <span class="marquee-item">Social Media Management<span>·</span></span>
+    <span class="marquee-item">Influencer Strategy<span>·</span></span>
+    <span class="marquee-item">Brand Storytelling<span>·</span></span>
+    <span class="marquee-item">Creative Direction<span>·</span></span>
+    <span class="marquee-item">Audience Insight<span>·</span></span>
+    <span class="marquee-item">Content Systems<span>·</span></span>
+    <span class="marquee-item">Content Strategy<span>·</span></span>
+    <span class="marquee-item">Campaign Ideation<span>·</span></span>
+    <span class="marquee-item">Social Media Management<span>·</span></span>
+    <span class="marquee-item">Influencer Strategy<span>·</span></span>
+    <span class="marquee-item">Brand Storytelling<span>·</span></span>
+    <span class="marquee-item">Creative Direction<span>·</span></span>
+    <span class="marquee-item">Audience Insight<span>·</span></span>
+    <span class="marquee-item">Content Systems<span>·</span></span>
+  </div>
+</div>
+
+<!-- ═══ SERVICES ════════════════════════════════════════ -->
+<section id="services" class="wrap">
+  <div class="sec-ghost" aria-hidden="true">Create.</div>
+  <div class="inner" style="position:relative;z-index:1">
+    <div class="svc-head">
+      <div>
+        <p class="eyebrow eo r">What I Do</p>
+        <h2 class="h2 r r1" style="color:var(--ink)">Brands who need<br />more than content.<br /><em style="color:var(--orange)">They need a system.</em></h2>
+      </div>
+      <p class="svc-sub r r2">Formed at WPP and EssenceMediacom, working across campaign ideation, influencer strategy, and content systems for major accounts.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc-item r r1">
+        <div class="svc-n">01</div><div class="svc-bar"></div>
+        <h3 class="svc-t">Content Strategy</h3>
+        <p class="svc-p">Platform frameworks, content pillars, publishing cadences, and the narrative architecture that makes posts mean something beyond the day they go live.</p>
+      </article>
+      <article class="svc-item r r2">
+        <div class="svc-n">02</div><div class="svc-bar"></div>
+        <h3 class="svc-t">Social Media Management</h3>
+        <p class="svc-p">Full-channel ownership. Planning, briefing, scheduling, community management, and monthly performance analysis against KPIs that tie to real objectives. No vanity metrics.</p>
+      </article>
+      <article class="svc-item r r3">
+        <div class="svc-n">03</div><div class="svc-bar"></div>
+        <h3 class="svc-t">Campaign &amp; Brand Ideation</h3>
+        <p class="svc-p">Concept development for launches, activations, and tentpole moments. From strategic brief to creative framework, built for execution. Influencer strategy included.</p>
+      </article>
+      <article class="svc-item r r4">
+        <div class="svc-n">04</div><div class="svc-bar"></div>
+        <h3 class="svc-t">Creative Strategy</h3>
+        <p class="svc-p">Translating brand positioning into visual and verbal direction. Audience insight, concept development, and creative frameworks before a single asset is made.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ══════════════════════════════════════════ -->
+<section id="process" class="wrap">
+  <div class="inner">
+    <div class="proc-head">
+      <div>
+        <p class="eyebrow el r">How I Work</p>
+        <h2 class="h2 r r1" style="color:var(--cream)">A method, not<br />just a <em style="color:var(--orange)">mandate.</em></h2>
+      </div>
+      <p class="proc-intro r r2">Every engagement follows the same four-phase method. Structure first, then scale.</p>
+    </div>
+
+    <!-- Flow graphic -->
+    <div class="flow r r1">
+      <div class="flow-step">
+        <div class="flow-node flow-node-active">01</div>
+        <div class="flow-label">Diagnose</div>
+        <div class="flow-sub">Audit before you create</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-node">02</div>
+        <div class="flow-label">Strategise</div>
+        <div class="flow-sub">Pillars, personas, logic</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-node">03</div>
+        <div class="flow-label">Build</div>
+        <div class="flow-sub">Systems, not just posts</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-node">04</div>
+        <div class="flow-label">Measure</div>
+        <div class="flow-sub">KPIs tied to objectives</div>
+      </div>
+    </div>
+
+    <div class="proc-grid">
+      <div class="pstep r r1">
+        <div class="pstep-ghost">01</div>
+        <p class="pstep-n">Step 01</p>
+        <h3 class="pstep-t">Diagnose before creating.</h3>
+        <p class="pstep-p">Every engagement starts with an audit: what the brand is saying, what the audience is hearing, and where the gap is.</p>
+      </div>
+      <div class="pstep r r2">
+        <div class="pstep-ghost">02</div>
+        <p class="pstep-n">Step 02</p>
+        <h3 class="pstep-t">Strategy before content.</h3>
+        <p class="pstep-p">Pillars, personas, and platform logic come before a single piece of content is briefed or created.</p>
+      </div>
+      <div class="pstep r r3">
+        <div class="pstep-ghost">03</div>
+        <p class="pstep-n">Step 03</p>
+        <h3 class="pstep-t">Build systems, not just posts.</h3>
+        <p class="pstep-p">Templates, guidelines, and editorial calendars that outlast any individual campaign.</p>
+      </div>
+      <div class="pstep r r4">
+        <div class="pstep-ghost">04</div>
+        <p class="pstep-n">Step 04</p>
+        <h3 class="pstep-t">Measure what matters.</h3>
+        <p class="pstep-p">Monthly reporting against KPIs tied to business objectives. Not reach and impressions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORK ══════════════════════════════════════════════ -->
+<section id="work">
+  <div class="work-head">
+    <div>
+      <p class="eyebrow eo r">Selected Work</p>
+      <h2 class="h2 r r1" style="color:var(--ink)">Strategy <em style="color:var(--green)">in action.</em></h2>
+    </div>
+    <p class="work-note r r2">Two strategy-led projects. Every claim evidenced.</p>
+  </div>
+
+  <!-- ── Fanta ── -->
+  <article class="case case-fanta r">
+    <div class="case-vis">
+      <span class="case-tag">Campaign Ideation · Influencer Strategy</span>
+      <div class="fanta-imgs">
+        <div class="card card-main">
+          <img src="assets/fanta-mirror.png" alt="Fanta x Chucky — Creepy Mirror Installation concept, Brussels" />
+        </div>
+        <div class="fanta-row">
+          <div class="card"><img src="assets/fanta-concept.png" alt="Fanta x Chucky Halloween campaign concept art" /></div>
+          <div class="card"><img src="assets/fanta-brand.png" alt="Fanta brand campaign — Gen Z lifestyle" /></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-body">
+      <p class="case-org">EssenceMediacom Belgium &nbsp;·&nbsp; 2025</p>
+      <h3 class="case-h3">Fanta <em>Halloween</em><br />× Chucky</h3>
+
+      <div class="case-row">
+        <p class="case-lbl">The Outcome</p>
+        <p class="case-txt">Strategic recommendations adopted as the campaign framework. Delivered as client-ready presentations using PowerPoint, Imagine AI, and Sidekick.</p>
+      </div>
+      <div class="case-row">
+        <p class="case-lbl">The Challenge</p>
+        <p class="case-txt">Fanta needed to re-enter Gen Z cultural conversation during Halloween. With earned relevance, not paid reach.</p>
+      </div>
+      <div class="case-row">
+        <p class="case-lbl">The Approach</p>
+        <p class="case-txt">Led campaign ideation aligning Gen Z insights with bold creative concepts: OOH installations, creepy mirror activations, a Haunted Toyshop movie night, and a targeted influencer strategy. The goal was to find micro-cultural moments where Fanta had genuine permission to speak.</p>
+      </div>
+      <a href="https://canva.link/q4pfkksypsmzrs5" target="_blank" rel="noopener" class="case-link">View full recommendation &rarr;</a>
+    </div>
+  </article>
+
+  <!-- ── Reading Princess ── -->
+  <article class="case case-reading r">
+    <div class="case-body">
+      <p class="case-org">Luxury Book Branding · Content Strategy · Social Media Management</p>
+      <h3 class="case-h3">The <em>Reading</em><br />Princess</h3>
+
+      <div class="case-row">
+        <p class="case-lbl">The Outcome · 30 days · 2 posts/week · zero paid spend</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+          <span class="metric" data-target="120" data-suffix="% views increase">0% views increase</span>
+          <span class="metric" data-target="49" data-suffix="% follower growth">0% follower growth</span>
+          <span class="metric" data-target="268" data-suffix=" accounts reached">0 accounts reached</span>
+        </div>
+        <p class="case-txt">Profile views more than doubled, follower count grew from 39 to 58, and 268 accounts were reached. All organically, within the first month of the rebrand.</p>
+      </div>
+      <div class="case-row">
+        <p class="case-lbl">The Challenge</p>
+        <p class="case-txt">The brand lacked consistent visual positioning and needed content that felt premium, collectible, and emotionally resonant for book lovers and special-edition collectors.</p>
+      </div>
+      <div class="case-row">
+        <p class="case-lbl">The Approach</p>
+        <p class="case-txt">Developed a refined brand direction focused on feminine luxury and fantasy-inspired visuals. Redesigned visual identity, improved profile presentation, and implemented an organic content strategy built around product showcases, sprayed-edge transformations, and cohesive brand storytelling.</p>
+      </div>
+      <a href="https://canva.link/ut6pkjn8ax32axm" target="_blank" rel="noopener" class="case-link">View full results &rarr;</a>
+    </div>
+    <div class="case-vis">
+      <span class="case-tag">Brand · Visual Identity</span>
+      <div class="ba-wrap">
+        <div class="ba-card">
+          <p class="ba-label before">Before</p>
+          <div class="card"><img src="assets/trp-p3-img1.png" alt="The Reading Princess Instagram profile — before rebrand" /></div>
+        </div>
+        <div class="ba-card after-card">
+          <p class="ba-label after">After</p>
+          <div class="card"><img src="assets/trp-p3-img2.png" alt="The Reading Princess Instagram profile — after rebrand" /></div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ── Ideation feature ── -->
+  <div class="ideation-feature r">
+    <div class="ideation-ghost" aria-hidden="true">Think.</div>
+    <div class="ideation-inner">
+      <div class="ideation-copy">
+        <p class="eyebrow" style="justify-content:center;margin-bottom:24px;color:rgba(255,255,255,.28)"><span style="display:inline-block;width:24px;height:1.5px;background:rgba(255,255,255,.18);margin-right:12px;vertical-align:middle"></span>Creative Strategy</p>
+        <h3 class="ideation-h3">See how the<br /><em>thinking</em> happens.</h3>
+      </div>
+      <div class="ideation-divider"></div>
+      <div class="ideation-bottom">
+        <p class="ideation-p">A full ideation and recommendation guide: from audience insight to concept development to execution framework. The document that turns briefs into brand-defining campaigns.</p>
+        <div class="ideation-right">
+          <p class="ideation-right-label">Ideation &amp;<br />Recommendation<br />Guide</p>
+          <a href="https://canva.link/q5he6cm2p0xfadx" target="_blank" rel="noopener" class="ideation-cta">Preview the guide &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══ GALLERY ═══════════════════════════════════════════ -->
+<section id="gallery" class="wrap">
+  <div class="sec-ghost" aria-hidden="true">Made.</div>
+  <div class="inner" style="position:relative;z-index:1">
+    <div class="gal-head">
+      <div>
+        <p class="eyebrow eg r">Graphics &amp; Content</p>
+        <h2 class="h2 r r1" style="color:var(--ink)">Made, not <em style="color:var(--orange)">just managed.</em></h2>
+      </div>
+      <a href="https://canva.link/tmkarsmo6h0p6x1" target="_blank" rel="noopener" class="gal-link r r2">View more graphics &amp; created posts &rarr;</a>
+    </div>
+    <div class="gal-grid">
+      <div class="gitem r r1">
+        <img src="assets/graphics-page-05.png" alt="Pink beauty brand — Instagram graphics campaign" />
+        <div class="glabel">Beauty Brand Campaign</div>
+      </div>
+      <div class="gitem r r2">
+        <img src="assets/graphics-page-07.png" alt="Luxury skincare self-care brand — Instagram content" />
+        <div class="glabel">Skincare &amp; Self-Care</div>
+      </div>
+      <div class="gitem r r3">
+        <img src="assets/graphics-page-03.png" alt="The Reading Princess — carousel graphics and reels" />
+        <div class="glabel">The Reading Princess</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BACKGROUND ════════════════════════════════════════ -->
+<section id="background" class="wrap">
+  <div class="inner">
+    <p class="eyebrow el r">Background</p>
+    <h2 class="h2 r r1" style="color:var(--cream)">Trained in strategy.<br /><em style="color:var(--orange)">Built for results.</em></h2>
+
+    <div class="logo-strip r r1">
+      <div class="logo-item">
+        <p class="logo-eyebrow">Education</p>
+        <p class="logo-name">Odisee</p>
+        <p class="logo-sub">University of Applied Sciences<br />Belgium</p>
+      </div>
+      <div class="logo-item">
+        <p class="logo-eyebrow">Global Agency</p>
+        <p class="logo-name">WPP</p>
+        <p class="logo-sub">World's largest advertising<br />holding group</p>
+      </div>
+      <div class="logo-item">
+        <p class="logo-eyebrow">Media Agency</p>
+        <p class="logo-name">EssenceMediacom</p>
+        <p class="logo-sub">WPP media agency network<br />Belgium</p>
+      </div>
+    </div>
+
+    <div class="bg-grid">
+      <div class="tl r r1">
+        <div class="tl-item">
+          <p class="tl-date">2022 – 2025</p>
+          <h3 class="tl-t">Bachelor's in Marketing <span class="tl-note">(Cum Laude)</span></h3>
+          <p class="tl-p">Odisee University of Applied Sciences, Belgium. Digital marketing, branding, and consumer behavior with a strong emphasis on data-driven strategy.</p>
+        </div>
+        <div class="tl-item">
+          <p class="tl-date">2025</p>
+          <h3 class="tl-t">WPP &amp; EssenceMediacom</h3>
+          <p class="tl-p">Global agency environment. Campaign ideation, content strategy, and influencer marketing across multiple brands and industries.</p>
+        </div>
+        <div class="tl-item">
+          <p class="tl-date">Thesis</p>
+          <h3 class="tl-t">Brand Storytelling in a Fragmented Media Landscape</h3>
+          <p class="tl-p">How brands maintain consistent narratives across social media, streaming, and OOH. Key finding: 74% of consumers notice differences in brand storytelling across platforms.</p>
+        </div>
+      </div>
+
+      <div class="r r2">
+        <p class="cert-lbl">Certifications</p>
+        <div class="cert-grid">
+          <a href="https://skillshop.exceedlms.com/student/award/x6ue17Q73Ub6HcN9nPbCxkGg" target="_blank" rel="noopener" class="cert-card">
+            <p class="cert-issuer">Google</p>
+            <p class="cert-name">Fundamentals of Digital Marketing</p>
+            <span class="cert-arr">↗</span>
+          </a>
+          <a href="https://app-eu1.hubspot.com/academy/achievements/mkc0197d/en/1/danielle-naidu/social-media-marketing" target="_blank" rel="noopener" class="cert-card">
+            <p class="cert-issuer">HubSpot</p>
+            <p class="cert-name">Social Media Marketing</p>
+            <span class="cert-arr">↗</span>
+          </a>
+          <a href="https://certificates.platform.qa.com/c15f113bd70290a0def8a48ca9823187a1e9fd74.pdf" target="_blank" rel="noopener" class="cert-card">
+            <p class="cert-issuer">QA Platform</p>
+            <p class="cert-name">Performance Marketing Strategy</p>
+            <span class="cert-arr">↗</span>
+          </a>
+          <a href="https://certificates.platform.qa.com/f65a33f6d64e701f244b6fbae00b5c2224e13f68.pdf" target="_blank" rel="noopener" class="cert-card">
+            <p class="cert-issuer">QA Platform</p>
+            <p class="cert-name">SEO Strategy</p>
+            <span class="cert-arr">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══════════════════════════════════════════ -->
+<section id="contact" class="wrap">
+  <div class="contact-ghost" aria-hidden="true">Strategy.</div>
+  <div class="inner">
+    <div class="contact-wrap">
+      <p class="eyebrow r" style="color:rgba(255,255,255,.38)">
+        <span style="display:inline-block;width:24px;height:1.5px;background:rgba(255,255,255,.3);margin-right:12px;vertical-align:middle"></span>
+        Currently Available
+      </p>
+      <h2 class="contact-h2 r r1">Let's build<br /><em>something.</em></h2>
+      <p class="contact-sub r r2">Open to freelance projects, retainer engagements, and brand collaborations. Based in Sandton, South Africa. Remote-ready. Open to relocation.</p>
+      <div class="pills r r3">
+        <span class="pill">Freelance Projects</span>
+        <span class="pill">Retainer Engagements</span>
+        <span class="pill">Brand Collaborations</span>
+      </div>
+      <div class="cta-row r r4">
+        <a href="mailto:daniellenaidu.co@gmail.com" class="btn-cream">Send an email</a>
+        <a href="https://www.linkedin.com/in/danielle-naidu/" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>&copy; 2026 Danielle Naidu</span>
+  <span>daniellenaidu.co@gmail.com</span>
+  <span>Sandton, South Africa &nbsp;·&nbsp; Remote &nbsp;·&nbsp; Open to relocation</span>
+</footer>
+
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.r').forEach(el=>el.classList.add('on'));
+    return;
+  }
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}});
+  },{threshold:0.1});
+  document.querySelectorAll('.r').forEach(el=>io.observe(el));
+
+  // counter animation
+  function animateCount(el){
+    const target=+el.dataset.target;
+    const suffix=el.dataset.suffix||'';
+    const duration=1600;
+    const start=performance.now();
+    function step(now){
+      const p=Math.min((now-start)/duration,1);
+      const ease=1-Math.pow(1-p,3);
+      el.textContent=Math.round(ease*target)+suffix;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const cio=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){animateCount(e.target);cio.unobserve(e.target)}
+    });
+  },{threshold:0.5});
+  document.querySelectorAll('.metric[data-target]').forEach(el=>cio.observe(el));
+})();
+</script>
+</body>
+</html>
