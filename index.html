@@ -657,6 +657,18 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
   .cta-row{flex-direction:column}
   .btn-cream,.btn-ghost{text-align:center;width:100%}
 }
+
+/* ─── PROCESS INTERACTIVITY ──────────────────────────── */
+.flow-step{cursor:pointer}
+.flow-step .flow-label{transition:color .25s}
+.flow-step.step-active .flow-label{color:var(--orange)}
+.flow-step .flow-sub{transition:color .25s}
+.flow-step.step-active .flow-sub{color:rgba(255,255,255,.65)}
+.pstep{transition:background .25s,border-top-color .25s;border-top:2px solid transparent}
+.pstep.pstep-active{background:rgba(124,107,201,.14);border-top:2px solid var(--orange)}
+.pstep.pstep-active .pstep-ghost{color:rgba(124,107,201,.07)}
+.pstep.pstep-active .pstep-p{color:rgba(255,255,255,.6)}
+
   </style>
 </head>
 <body>
@@ -769,7 +781,7 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 
     <!-- Flow graphic -->
     <div class="flow r r1">
-      <div class="flow-step">
+      <div class="flow-step step-active">
         <div class="flow-node flow-node-active">01</div>
         <div class="flow-label">Diagnose</div>
         <div class="flow-sub">Audit before you create</div>
@@ -1206,6 +1218,28 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
       this.parentNode.replaceChild(s,this);
     });
   });
+
+  // Process step interactivity
+  (function(){
+    var flowSteps = document.querySelectorAll('.flow-step');
+    var psteps    = document.querySelectorAll('.pstep');
+    // activate step 01 card by default
+    if(psteps[0]) psteps[0].classList.add('pstep-active');
+    flowSteps.forEach(function(step, i){
+      step.addEventListener('click', function(){
+        // nodes
+        document.querySelectorAll('.flow-node').forEach(function(n){ n.classList.remove('flow-node-active'); });
+        var node = this.querySelector('.flow-node');
+        if(node) node.classList.add('flow-node-active');
+        // flow-step label
+        flowSteps.forEach(function(s){ s.classList.remove('step-active'); });
+        this.classList.add('step-active');
+        // pstep cards
+        psteps.forEach(function(p){ p.classList.remove('pstep-active'); });
+        if(psteps[i]) psteps[i].classList.add('pstep-active');
+      });
+    });
+  })();
 })();
 </script>
 </body>
