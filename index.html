@@ -518,6 +518,8 @@ a{color:inherit;text-decoration:none}
 .btn-cream:hover{background:var(--ink);color:var(--cream)}
 .btn-ghost{display:inline-block;padding:13px 38px;border:1.5px solid rgba(255,255,255,.38);color:rgba(255,255,255,.8);font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;transition:background .2s}
 .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7)}
+.email-toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);color:var(--cream);font-size:10px;letter-spacing:.15em;text-transform:uppercase;padding:12px 28px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:999}
+.email-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ─── FOOTER ──────────────────────────────────────── */
 footer{background:var(--ink);padding:24px var(--g);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid rgba(255,255,255,.05)}
@@ -985,6 +987,8 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
   </div>
 </section>
 
+<div id="email-toast" class="email-toast" role="status" aria-live="polite">Email address copied!</div>
+
 <footer>
   <span>&copy; 2026 Danielle Naidu</span>
   <span>daniellenaidu.co@gmail.com</span>
@@ -1022,6 +1026,22 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
     });
   },{threshold:0.5});
   document.querySelectorAll('.metric[data-target]').forEach(el=>cio.observe(el));
+
+  // mailto fallback: if window stays focused after click, email client didn't open → copy address
+  const mailLink=document.querySelector('a[href^="mailto:"]');
+  const toast=document.getElementById('email-toast');
+  if(mailLink&&toast){
+    mailLink.addEventListener('click',function(){
+      setTimeout(function(){
+        if(document.hasFocus()){
+          navigator.clipboard.writeText('daniellenaidu.co@gmail.com').then(function(){
+            toast.classList.add('show');
+            setTimeout(function(){toast.classList.remove('show')},2500);
+          });
+        }
+      },500);
+    });
+  }
 })();
 </script>
 </body>
