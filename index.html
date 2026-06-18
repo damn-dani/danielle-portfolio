@@ -525,6 +525,48 @@ a{color:inherit;text-decoration:none}
 footer{background:var(--ink);padding:24px var(--g);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid rgba(255,255,255,.05)}
 footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 
+
+/* ─── SVC WIDE (Website Design card) ─────────────────── */
+.svc-item-wide{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;padding:32px 28px}
+.svc-item-wide .svc-n{margin-bottom:0}
+.svc-item-wide .svc-bar{display:none}
+.svc-wide-body{display:flex;flex-direction:column;gap:8px}
+.svc-wide-badge{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--orange);font-weight:500}
+@media(max-width:600px){.svc-item-wide{grid-template-columns:1fr;gap:16px}.svc-item-wide .svc-n{display:none}}
+
+/* ─── TOOLS ──────────────────────────────────────── */
+#tools{background:var(--cream2)}
+.tools-block{margin-top:48px}
+.tools-block+.tools-block{margin-top:52px;padding-top:52px;border-top:1px solid var(--border)}
+.tools-block-label{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;font-weight:500}
+.tools-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tools-cards-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.tool-card{
+  background:var(--cream);border:1.5px solid rgba(17,17,17,.12);border-radius:var(--card-r);
+  padding:24px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;
+  text-align:center;transition:border-color .22s,box-shadow .22s;
+}
+.tool-card:hover{border-color:var(--orange);box-shadow:0 4px 20px rgba(124,107,201,.12)}
+.tool-card.wip{border-style:dashed;border-color:rgba(124,107,201,.4);background:rgba(124,107,201,.03)}
+.tool-card.wip:hover{border-color:var(--orange);border-style:solid}
+.tool-icon{width:36px;height:36px;object-fit:contain;display:block;flex-shrink:0}
+.tool-icon-initial{
+  width:36px;height:36px;border-radius:8px;background:var(--ink);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:13px;font-weight:700;flex-shrink:0;
+}
+.tool-name{font-size:12px;font-weight:500;color:var(--ink);line-height:1.3}
+.tool-cat{font-size:9px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:960px){
+  .tools-cards{grid-template-columns:repeat(3,1fr)}
+  .tools-cards-5{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+  .tools-cards,.tools-cards-5{grid-template-columns:repeat(2,1fr);gap:8px}
+  .tool-card{padding:18px 12px;gap:8px}
+  .svc-item-wide{grid-template-columns:1fr;gap:16px}
+}
+
 /* ─── PRINT ───────────────────────────────────────── */
 @media print{
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
@@ -912,28 +954,82 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
         <h2 class="h2 r r1" style="color:var(--ink)">Tools that<br /><em style="color:var(--orange)">power the work.</em></h2>
       </div>
     </div>
-    <div class="tools-layout">
-      <div class="r r2">
-        <p class="tools-label">Daily Stack</p>
-        <div class="tools-chips">
-          <span class="tool-chip">Canva</span>
-          <span class="tool-chip">Metricool</span>
-          <span class="tool-chip">CapCut</span>
-          <span class="tool-chip">Meta Business Suite</span>
-          <span class="tool-chip">ChatGPT</span>
-          <span class="tool-chip">Claude</span>
-          <span class="tool-chip">Claude Code</span>
-          <span class="tool-chip">Wix</span>
+
+    <!-- Daily Stack -->
+    <div class="tools-block r r2">
+      <p class="tools-block-label">Daily Stack</p>
+      <div class="tools-cards">
+        <div class="tool-card">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/canva/111111" alt="Canva" data-initial="Ca" />
+          <p class="tool-name">Canva</p>
+          <p class="tool-cat">Design</p>
+        </div>
+        <div class="tool-card">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/metricool/111111" alt="Metricool" data-initial="Mc" />
+          <p class="tool-name">Metricool</p>
+          <p class="tool-cat">Analytics</p>
+        </div>
+        <div class="tool-card">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/capcut/111111" alt="CapCut" data-initial="Cc" />
+          <p class="tool-name">CapCut</p>
+          <p class="tool-cat">Video</p>
+        </div>
+        <div class="tool-card">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/meta/111111" alt="Meta" data-initial="Mb" />
+          <p class="tool-name">Meta Business Suite</p>
+          <p class="tool-cat">Social</p>
+        </div>
+        <div class="tool-card">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/openai/111111" alt="ChatGPT" data-initial="Gp" />
+          <p class="tool-name">ChatGPT</p>
+          <p class="tool-cat">AI</p>
+        </div>
+        <div class="tool-card">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/anthropic/111111" alt="Claude" data-initial="Cl" />
+          <p class="tool-name">Claude</p>
+          <p class="tool-cat">AI</p>
+        </div>
+        <div class="tool-card">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/anthropic/111111" alt="Claude Code" data-initial="Cc" />
+          <p class="tool-name">Claude Code</p>
+          <p class="tool-cat">AI Dev</p>
+        </div>
+        <div class="tool-card">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/wix/111111" alt="Wix" data-initial="Wx" />
+          <p class="tool-name">Wix</p>
+          <p class="tool-cat">Website</p>
         </div>
       </div>
-      <div class="r r3">
-        <p class="tools-label">Currently Working On</p>
-        <div class="tools-chips">
-          <span class="tool-chip tool-wip">Beacons AI</span>
-          <span class="tool-chip tool-wip">Google Ads</span>
-          <span class="tool-chip tool-wip">Google Analytics</span>
-          <span class="tool-chip tool-wip">HubSpot</span>
-          <span class="tool-chip tool-wip">Mailchimp</span>
+    </div>
+
+    <!-- Currently Working On -->
+    <div class="tools-block r r3">
+      <p class="tools-block-label">Currently Working On</p>
+      <div class="tools-cards-5">
+        <div class="tool-card wip">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/beacons/7C6BC9" alt="Beacons AI" data-initial="Ba" />
+          <p class="tool-name">Beacons AI</p>
+          <p class="tool-cat">Link in Bio</p>
+        </div>
+        <div class="tool-card wip">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/googleads/7C6BC9" alt="Google Ads" data-initial="Ga" />
+          <p class="tool-name">Google Ads</p>
+          <p class="tool-cat">Paid Search</p>
+        </div>
+        <div class="tool-card wip">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/googleanalytics/7C6BC9" alt="Google Analytics" data-initial="Ga" />
+          <p class="tool-name">Google Analytics</p>
+          <p class="tool-cat">Analytics</p>
+        </div>
+        <div class="tool-card wip">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/hubspot/7C6BC9" alt="HubSpot" data-initial="Hs" />
+          <p class="tool-name">HubSpot</p>
+          <p class="tool-cat">CRM</p>
+        </div>
+        <div class="tool-card wip">
+          <img class="tool-icon" src="https://cdn.simpleicons.org/mailchimp/7C6BC9" alt="Mailchimp" data-initial="Mc" />
+          <p class="tool-name">Mailchimp</p>
+          <p class="tool-cat">Email</p>
         </div>
       </div>
     </div>
@@ -1091,6 +1187,16 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
       },500);
     });
   }
+
+  // tool icon fallback — show initial badge when CDN icon fails to load
+  document.querySelectorAll('.tool-icon').forEach(function(img){
+    img.addEventListener('error',function(){
+      var s=document.createElement('span');
+      s.className='tool-icon-initial';
+      s.textContent=this.dataset.initial||'?';
+      this.parentNode.replaceChild(s,this);
+    });
+  });
 })();
 </script>
 </body>
