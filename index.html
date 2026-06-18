@@ -672,15 +672,16 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 
 /* ─── BUILT WITH CLAUDE ──────────────────────────────── */
 .built-strip{
-  background:var(--ink);
+  background:var(--cream);
   padding:clamp(72px,9vw,120px) var(--g);
   position:relative;overflow:hidden;
+  border-top:1px solid var(--border);
 }
 .built-ghost{
   position:absolute;bottom:-0.12em;right:-0.04em;
   font-family:var(--serif);font-style:italic;font-weight:700;
   font-size:clamp(140px,22vw,320px);line-height:1;white-space:nowrap;
-  color:transparent;-webkit-text-stroke:1px rgba(124,107,201,.18);
+  color:transparent;-webkit-text-stroke:1px rgba(124,107,201,.1);
   pointer-events:none;user-select:none;letter-spacing:-.03em;
 }
 .built-inner{
@@ -691,26 +692,26 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 .built-h2{
   font-family:var(--serif);
   font-size:clamp(44px,6vw,86px);font-weight:700;line-height:.92;
-  color:var(--cream);letter-spacing:-.02em;margin-bottom:24px;
+  color:var(--ink);letter-spacing:-.02em;margin-bottom:24px;
 }
 .built-h2 em{font-style:italic;color:var(--orange)}
-.built-p{font-size:16px;color:rgba(255,255,255,.42);line-height:1.82;max-width:520px}
+.built-p{font-size:16px;color:var(--muted);line-height:1.82;max-width:520px}
 .built-right{
   display:flex;flex-direction:column;align-items:flex-start;gap:8px;flex-shrink:0;
-  border-left:1px solid rgba(255,255,255,.08);padding-left:64px;
+  border-left:1px solid var(--border);padding-left:64px;
 }
-.built-cta-label{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--cream);line-height:1.2}
-.built-cta-sub{font-size:14px;color:rgba(255,255,255,.38);margin-bottom:20px}
+.built-cta-label{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--ink);line-height:1.2}
+.built-cta-sub{font-size:14px;color:var(--muted);margin-bottom:20px}
 .built-cta{
   display:inline-block;padding:13px 36px;
-  background:var(--orange);color:var(--green);
+  background:var(--ink);color:var(--cream);
   font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
   transition:background .22s,color .22s;
 }
-.built-cta:hover{background:var(--cream);color:var(--ink)}
+.built-cta:hover{background:var(--orange);color:var(--green)}
 @media(max-width:900px){
   .built-inner{grid-template-columns:1fr;gap:48px}
-  .built-right{border-left:none;padding-left:0;border-top:1px solid rgba(255,255,255,.08);padding-top:40px}
+  .built-right{border-left:none;padding-left:0;border-top:1px solid var(--border);padding-top:40px}
 }
 @media(max-width:600px){
   .built-cta-label{font-size:18px}
@@ -1182,12 +1183,9 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
   <div class="built-ghost" aria-hidden="true">Claude.</div>
   <div class="built-inner">
     <div class="built-left">
-      <p class="eyebrow" style="color:rgba(255,255,255,.28);margin-bottom:20px">
-        <span style="display:inline-block;width:24px;height:1.5px;background:rgba(255,255,255,.18);margin-right:12px;vertical-align:middle"></span>
-        Built with Claude Code
-      </p>
-      <h2 class="built-h2">This website?<br /><em>I built it.</em></h2>
-      <p class="built-p">Every section of this site was designed and developed by me using Claude Code — no agency, no developer. Just strategy, the right tools, and a point of view. It's not just a portfolio. It's proof.</p>
+      <p class="eyebrow eo r" style="margin-bottom:20px">Website Design</p>
+      <h2 class="built-h2 r r1">Most strategists hand off<br />to a developer.<br /><em>I don't.</em></h2>
+      <p class="built-p r r2">Built end-to-end using Claude Code — strategy, design, and execution in one person. If you want a website that thinks before it looks pretty, let's talk.</p>
     </div>
     <div class="built-right">
       <p class="built-cta-label">Like what you see?</p>
