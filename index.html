@@ -527,12 +527,23 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 
 
 /* ─── SVC WIDE (Website Design card) ─────────────────── */
-.svc-item-wide{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;padding:32px 28px}
-.svc-item-wide .svc-n{margin-bottom:0}
+.svc-item-wide{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:40px;
+  padding:36px 28px;
+  border-left:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+  transition:background .3s;cursor:default;
+}
+.svc-item-wide:hover{background:var(--green)}
+.svc-item-wide:hover .svc-n{color:rgba(255,255,255,.04)}
+.svc-item-wide:hover .svc-t{color:var(--cream)}
+.svc-item-wide:hover .svc-p{color:rgba(255,255,255,.38)}
+.svc-item-wide:hover .svc-wide-badge{color:var(--orange)}
+.svc-item-wide:hover .svc-wide-link{color:rgba(255,255,255,.3)}
+.svc-item-wide .svc-n{margin-bottom:0;line-height:1}
 .svc-item-wide .svc-bar{display:none}
-.svc-wide-body{display:flex;flex-direction:column;gap:8px}
-.svc-wide-badge{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--orange);font-weight:500}
-@media(max-width:600px){.svc-item-wide{grid-template-columns:1fr;gap:16px}.svc-item-wide .svc-n{display:none}}
+.svc-wide-body{display:flex;flex-direction:column;gap:6px}
+.svc-wide-badge{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--orange);font-weight:500;transition:color .3s}
+.svc-wide-link{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);flex-shrink:0;transition:color .3s}
 
 /* ─── TOOLS ──────────────────────────────────────── */
 #tools{background:var(--cream2)}
@@ -564,7 +575,7 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
 @media(max-width:600px){
   .tools-cards,.tools-cards-5{grid-template-columns:repeat(2,1fr);gap:8px}
   .tool-card{padding:18px 12px;gap:8px}
-  .svc-item-wide{grid-template-columns:1fr;gap:16px}
+  .svc-item-wide{grid-template-columns:1fr;gap:20px}
 }
 
 /* ─── PRINT ───────────────────────────────────────── */
@@ -732,18 +743,16 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
         <h3 class="svc-t">Creative Strategy</h3>
         <p class="svc-p">Translating brand positioning into visual and verbal direction. Audience insight, concept development, and creative frameworks before a single asset is made.</p>
       </article>
-      <article class="svc-item svc-item-wide r r4">
-        <div class="svc-n">05</div>
-        <div class="svc-wide-body">
-          <p class="svc-wide-badge">Built with AI &nbsp;·&nbsp; Claude</p>
-          <h3 class="svc-t">Website Design</h3>
-          <p class="svc-p">Custom websites designed and built from scratch — strategy, structure, and visual direction handled end-to-end. Powered by a human point of view and AI execution.</p>
-        </div>
-        <div style="flex-shrink:0">
-          <span style="display:inline-flex;align-items:center;gap:8px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)">Wix &nbsp;·&nbsp; HTML/CSS</span>
-        </div>
-      </article>
     </div>
+    <article class="svc-item-wide r r4">
+      <div class="svc-n">05</div>
+      <div class="svc-wide-body">
+        <p class="svc-wide-badge">Built with AI &nbsp;·&nbsp; Claude</p>
+        <h3 class="svc-t">Website Design</h3>
+        <p class="svc-p">Custom websites designed and built from scratch — strategy, structure, and visual direction handled end-to-end. Powered by a human point of view and AI execution.</p>
+      </div>
+      <span class="svc-wide-link">Wix &nbsp;·&nbsp; HTML/CSS</span>
+    </article>
   </div>
 </section>
 
