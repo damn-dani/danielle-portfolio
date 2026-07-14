@@ -931,13 +931,13 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
       <h3 class="case-h3">The <em>Reading</em><br />Princess</h3>
 
       <div class="case-row">
-        <p class="case-lbl">The Outcome · 30 days · 2 posts/week · zero paid spend</p>
+        <p class="case-lbl">The Outcome · 60 days · 3 posts/week · zero paid spend</p>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">
-          <span class="metric" data-target="120" data-suffix="% views increase">0% views increase</span>
-          <span class="metric" data-target="49" data-suffix="% follower growth">0% follower growth</span>
-          <span class="metric" data-target="268" data-suffix=" accounts reached">0 accounts reached</span>
+          <span class="metric" data-target="151" data-suffix="% follower growth">0% follower growth</span>
+          <span class="metric" data-target="102" data-suffix="% views increase">0% views increase</span>
+          <span class="metric" data-target="177" data-suffix="% more content published">0% more content published</span>
         </div>
-        <p class="case-txt">Profile views more than doubled, follower count grew from 39 to 58, and 268 accounts were reached. All organically, within the first month of the rebrand.</p>
+        <p class="case-txt">Follower count grew from 39 to 98, profile views more than doubled, and content output nearly tripled. All organically, across two consecutive months of the rebrand.</p>
       </div>
       <div class="case-row">
         <p class="case-lbl">The Challenge</p>
@@ -958,7 +958,7 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
         </div>
         <div class="ba-card after-card">
           <p class="ba-label after">After</p>
-          <div class="card"><img src="assets/trp-p3-img2.png" alt="The Reading Princess Instagram profile — after rebrand" /></div>
+          <div class="card"><img src="assets/trp-p3-img3.png" alt="The Reading Princess Instagram profile — two months after rebrand" /></div>
         </div>
       </div>
     </div>
@@ -1171,6 +1171,11 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
             <p class="cert-name">SEO Strategy</p>
             <span class="cert-arr">↗</span>
           </a>
+          <a href="assets/wethinkcode-genai-certificate.pdf" target="_blank" rel="noopener" class="cert-card">
+            <p class="cert-issuer">WeThinkCode_</p>
+            <p class="cert-name">GenAI Course for Professionals</p>
+            <span class="cert-arr">↗</span>
+          </a>
         </div>
       </div>
     </div>
@@ -1289,21 +1294,26 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
   (function(){
     var flowSteps = document.querySelectorAll('.flow-step');
     var psteps    = document.querySelectorAll('.pstep');
-    // activate step 01 card by default
-    if(psteps[0]) psteps[0].classList.add('pstep-active');
+    function activateStep(i){
+      // nodes
+      document.querySelectorAll('.flow-node').forEach(function(n){ n.classList.remove('flow-node-active'); });
+      var node = flowSteps[i] && flowSteps[i].querySelector('.flow-node');
+      if(node) node.classList.add('flow-node-active');
+      // flow-step label
+      flowSteps.forEach(function(s){ s.classList.remove('step-active'); });
+      if(flowSteps[i]) flowSteps[i].classList.add('step-active');
+      // pstep cards
+      psteps.forEach(function(p){ p.classList.remove('pstep-active'); });
+      if(psteps[i]) psteps[i].classList.add('pstep-active');
+    }
+    // activate step 01 by default
+    activateStep(0);
     flowSteps.forEach(function(step, i){
-      step.addEventListener('click', function(){
-        // nodes
-        document.querySelectorAll('.flow-node').forEach(function(n){ n.classList.remove('flow-node-active'); });
-        var node = this.querySelector('.flow-node');
-        if(node) node.classList.add('flow-node-active');
-        // flow-step label
-        flowSteps.forEach(function(s){ s.classList.remove('step-active'); });
-        this.classList.add('step-active');
-        // pstep cards
-        psteps.forEach(function(p){ p.classList.remove('pstep-active'); });
-        if(psteps[i]) psteps[i].classList.add('pstep-active');
-      });
+      step.addEventListener('click', function(){ activateStep(i); });
+    });
+    psteps.forEach(function(pstep, i){
+      pstep.style.cursor = 'pointer';
+      pstep.addEventListener('click', function(){ activateStep(i); });
     });
   })();
 })();
