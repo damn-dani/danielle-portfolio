@@ -51,11 +51,12 @@ a{color:inherit;text-decoration:none}
   background:rgba(247,243,238,.97);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--border);
 }
-.nav-logo{font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;color:var(--ink)}
-.nav-list{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-list a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:400;transition:color .2s}
+.nav-logo{font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;color:var(--ink);white-space:nowrap;flex-shrink:0}
+.nav-list{display:flex;align-items:center;gap:clamp(14px,1.8vw,28px);list-style:none}
+@media(max-width:1160px){.nav-list{display:none}}
+.nav-list a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:400;transition:color .2s;white-space:nowrap}
 .nav-list a:hover{color:var(--ink)}
-.nav-cta{padding:7px 20px;background:var(--green);color:var(--cream)!important;font-weight:500!important;transition:background .2s!important}
+.nav-cta{padding:7px 20px;background:var(--green);color:var(--cream)!important;font-weight:500!important;transition:background .2s!important;flex-shrink:0;white-space:nowrap}
 .nav-cta:hover{background:var(--green2)!important}
 
 /* ─── HERO ────────────────────────────────────────── */
@@ -401,6 +402,27 @@ a{color:inherit;text-decoration:none}
 }
 .more-work a:hover{color:var(--orange);border-color:var(--orange)}
 
+/* ─── COPYWRITING (spec work) ────────────────────── */
+#copywriting{background:var(--cream);position:relative;overflow:hidden}
+.copy-grid{display:flex;flex-direction:column;margin-top:48px}
+.copy-card{display:grid;grid-template-columns:220px 1fr;gap:48px;padding:44px 0;border-top:1px solid var(--border)}
+.copy-card:last-child{border-bottom:1px solid var(--border)}
+.copy-idx{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.copy-name{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--ink);line-height:1.05;margin-bottom:8px}
+.copy-pos{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--muted);line-height:1.4}
+.copy-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.copy-tag{display:inline-block;padding:3px 10px;font-size:11px;letter-spacing:.05em;font-weight:500;border-radius:2px;background:rgba(124,107,201,.12);color:var(--orange)}
+.copy-hook{font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(19px,2.1vw,25px);color:var(--ink);line-height:1.35;margin-bottom:20px}
+.copy-sample-lbl{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:500}
+.copy-sample-txt{font-size:15px;line-height:1.78;color:var(--muted);margin-bottom:18px}
+.copy-cta{font-size:13px;color:var(--orange);font-weight:500;line-height:1.6}
+
+/* ─── SEO & CONTENT STRATEGY (experience) ────────── */
+#seo{background:var(--green)}
+.seo-quote{border-left:2px solid var(--orange);padding-left:20px;margin-top:28px}
+.seo-quote-txt{font-family:var(--serif);font-style:italic;font-size:19px;font-weight:600;color:var(--cream);line-height:1.5;margin-bottom:10px}
+.seo-quote-attr{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+
 /* ─── GALLERY ─────────────────────────────────────── */
 #gallery{background:var(--cream);position:relative;overflow:hidden}
 .gal-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;gap:24px}
@@ -600,6 +622,7 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
   .case-reading .case-body{order:0}
   .case-vis{min-height:260px}
   .bg-grid{grid-template-columns:1fr;gap:48px}
+  .copy-card{grid-template-columns:1fr;gap:16px}
   .gal-grid{grid-template-columns:1fr 1fr}
   .gal-head{flex-direction:column;align-items:flex-start;gap:16px}
   footer{justify-content:center;text-align:center}
@@ -643,6 +666,9 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
   .ideation-p{text-align:center;max-width:100%}
   .ideation-right{flex-direction:column;align-items:center;gap:12px}
   .ideation-right-label{display:none}
+  /* copywriting */
+  .copy-name{font-size:26px}
+  .copy-hook{margin-bottom:16px}
   /* gallery */
   .gal-grid{grid-template-columns:1fr}
   /* background */
@@ -728,6 +754,10 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#work">Work</a></li>
+    <li><a href="#copywriting">Copywriting</a></li>
+    <li><a href="#seo">SEO</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#tools">Tools</a></li>
     <li><a href="#background">About</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Let's talk</a>
@@ -825,30 +855,6 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
         <h2 class="h2 r r1" style="color:var(--cream)">A method, not<br />just a <em style="color:var(--orange)">mandate.</em></h2>
       </div>
       <p class="proc-intro r r2">Every engagement follows the same four-phase method. Structure first, then scale.</p>
-    </div>
-
-    <!-- Flow graphic -->
-    <div class="flow r r1">
-      <div class="flow-step step-active">
-        <div class="flow-node flow-node-active">01</div>
-        <div class="flow-label">Diagnose</div>
-        <div class="flow-sub">Audit before you create</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-node">02</div>
-        <div class="flow-label">Strategise</div>
-        <div class="flow-sub">Pillars, personas, logic</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-node">03</div>
-        <div class="flow-label">Build</div>
-        <div class="flow-sub">Systems, not just posts</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-node">04</div>
-        <div class="flow-label">Measure</div>
-        <div class="flow-sub">KPIs tied to objectives</div>
-      </div>
     </div>
 
     <div class="proc-grid">
@@ -983,6 +989,149 @@ footer span{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.2)}
     </div>
   </div>
 
+</section>
+
+<!-- ═══ COPYWRITING ═══════════════════════════════════════ -->
+<section id="copywriting" class="wrap">
+  <div class="sec-ghost" aria-hidden="true">Write.</div>
+  <div class="inner" style="position:relative;z-index:1">
+    <div class="svc-head">
+      <div>
+        <p class="eyebrow eo r">Spec Work &nbsp;·&nbsp; Concept Samples</p>
+        <h2 class="h2 r r1" style="color:var(--ink)">Five brands.<br /><em style="color:var(--orange)">One voice that adapts.</em></h2>
+      </div>
+      <p class="svc-sub r r2">Concept work for five fictional brands, written to prove the voice changes on purpose. Not client work, just range that's easy to claim and harder to actually show.</p>
+    </div>
+
+    <div class="copy-grid">
+      <article class="copy-card r r1">
+        <div>
+          <p class="copy-idx">01 &nbsp;·&nbsp; AI &amp; Productivity SaaS</p>
+          <h3 class="copy-name">Flowstate</h3>
+          <p class="copy-pos">Fewer decisions before 9am.</p>
+        </div>
+        <div>
+          <div class="copy-tags">
+            <span class="copy-tag">direct</span>
+            <span class="copy-tag">confident</span>
+            <span class="copy-tag">no fluff</span>
+          </div>
+          <p class="copy-hook">"You don't have a time management problem. You have a decision-fatigue problem."</p>
+          <p class="copy-sample-lbl">Caption</p>
+          <p class="copy-sample-txt">Every "quick task" you do manually isn't costing you time, it's costing you decisions, and you only have so many good ones per day. Swipe to see the 4 decisions Flowstate removes before 9am.</p>
+          <p class="copy-cta">Comment "DEMO" and we'll send the 2-minute walkthrough, no call required.</p>
+        </div>
+      </article>
+
+      <article class="copy-card r r2">
+        <div>
+          <p class="copy-idx">02 &nbsp;·&nbsp; Health &amp; Wellness</p>
+          <h3 class="copy-name">Root &amp; Rise</h3>
+          <p class="copy-pos">Wellness that doesn't feel like a second job.</p>
+        </div>
+        <div>
+          <div class="copy-tags">
+            <span class="copy-tag">warm</span>
+            <span class="copy-tag">honest</span>
+            <span class="copy-tag">unhurried</span>
+          </div>
+          <p class="copy-hook">"Your 6am workout isn't the problem. Your 11pm scrolling is."</p>
+          <p class="copy-sample-lbl">Caption</p>
+          <p class="copy-sample-txt">Nobody warns you that self-care can become another thing on your to-do list. This isn't about adding more rituals, it's about removing the ones that don't actually help.</p>
+          <p class="copy-cta">Save this for the next time wellness content makes you feel behind.</p>
+        </div>
+      </article>
+
+      <article class="copy-card r r3">
+        <div>
+          <p class="copy-idx">03 &nbsp;·&nbsp; Sustainable &amp; Eco-Conscious</p>
+          <h3 class="copy-name">Bare Goods Co.</h3>
+          <p class="copy-pos">The label truths brands don't want printed.</p>
+        </div>
+        <div>
+          <div class="copy-tags">
+            <span class="copy-tag">blunt</span>
+            <span class="copy-tag">transparent</span>
+            <span class="copy-tag">a little cheeky</span>
+          </div>
+          <p class="copy-hook">"Most 'eco-friendly' packaging still ends up in a landfill. Here's how to tell the difference."</p>
+          <p class="copy-sample-lbl">Carousel Slide</p>
+          <p class="copy-sample-txt">"Biodegradable" sounds great, but it's often only true in industrial facilities most cities don't have. Here's what we actually put on our packaging instead.</p>
+          <p class="copy-cta">Follow for more of the label truths brands don't want printed.</p>
+        </div>
+      </article>
+
+      <article class="copy-card r r4">
+        <div>
+          <p class="copy-idx">04 &nbsp;·&nbsp; Personal Finance &amp; Fintech</p>
+          <h3 class="copy-name">Ledger &amp; Lime</h3>
+          <p class="copy-pos">The financial admin nobody explains to freelancers.</p>
+        </div>
+        <div>
+          <div class="copy-tags">
+            <span class="copy-tag">plainspoken</span>
+            <span class="copy-tag">reassuring</span>
+            <span class="copy-tag">numbers literate</span>
+          </div>
+          <p class="copy-hook">"Nobody tells freelancers this before their first tax season."</p>
+          <p class="copy-sample-lbl">Caption (LinkedIn)</p>
+          <p class="copy-sample-txt">If you're clearing more than $1,000 owed for the year, the IRS expects estimated payments four times a year, not once in April. We built our quarterly reminder after hearing this from three clients in one month.</p>
+          <p class="copy-cta">Save this before tax season, future you will thank you.</p>
+        </div>
+      </article>
+
+      <article class="copy-card r r4">
+        <div>
+          <p class="copy-idx">05 &nbsp;·&nbsp; Local Service Business</p>
+          <h3 class="copy-name">Harlow Homes</h3>
+          <p class="copy-pos">What the listing photos don't show you.</p>
+        </div>
+        <div>
+          <div class="copy-tags">
+            <span class="copy-tag">candid</span>
+            <span class="copy-tag">local</span>
+            <span class="copy-tag">on-purpose unpolished</span>
+          </div>
+          <p class="copy-hook">"The listing photos lied. Here's what this house actually looks like at 5pm."</p>
+          <p class="copy-sample-lbl">Caption</p>
+          <p class="copy-sample-txt">Real estate content is oversaturated with polish. This one shows the actual light, the actual street noise, the actual walk to the kitchen, because that's what buyers really want to know.</p>
+          <p class="copy-cta">DM "TOUR" and we'll send the private showing times before this hits the open market.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEO & CONTENT STRATEGY ════════════════════════════ -->
+<section id="seo" class="wrap">
+  <div class="inner">
+    <p class="eyebrow el r">Experience &amp; Credentials</p>
+    <h2 class="h2 r r1" style="color:var(--cream)">Real SEO experience.<br /><em style="color:var(--orange)">Not a flashy case study.</em></h2>
+    <p class="proc-intro r r2" style="margin-top:20px">No hard metrics to point to for this one, just real ownership of SEO and content strategy, and the habit of turning raw data into decisions other departments could act on.</p>
+
+    <div class="bg-grid">
+      <div class="tl r r1">
+        <div class="tl-item">
+          <p class="tl-date">Aug – Nov 2023 &nbsp;·&nbsp; Belgium</p>
+          <h3 class="tl-t">GoVocal, Marketing &amp; Operations Intern <span class="tl-note">(formerly CitizenLab)</span></h3>
+          <p class="tl-p">Owned SEO and blog content strategy: organizing and publishing content on a schedule, and maintaining a content calendar tracking publishing across platforms. Analyzed performance data in Google Analytics 4, reported against KPIs, and presented insights that were used to inform decisions across departments. Also worked in Salesforce and ran content and customer journey analysis.</p>
+        </div>
+      </div>
+
+      <div class="r r2">
+        <p class="cert-lbl">Certifications</p>
+        <div class="pills" style="margin-bottom:8px">
+          <span class="pill">QA &nbsp;·&nbsp; SEO Strategy</span>
+          <span class="pill">QA &nbsp;·&nbsp; Performance Marketing Strategy</span>
+          <span class="pill">Google &nbsp;·&nbsp; Fundamentals of Digital Marketing</span>
+        </div>
+        <blockquote class="seo-quote">
+          <p class="seo-quote-txt">"Remarkable independence and initiative... thorough work... excellent time management."</p>
+          <p class="seo-quote-attr">Amir Bolouryazad, Head of Marketing, CitizenLab</p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ═══ GALLERY ═══════════════════════════════════════════ -->
