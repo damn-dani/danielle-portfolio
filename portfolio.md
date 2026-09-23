@@ -1,6 +1,9 @@
 # Portfolio — Progress Log
 
-> **How to resume:** Say "pickup portfolio.md" (or paste this file). Claude should read this whole file, then `Read` the current `index.html` in this folder before making any changes, since this log may lag the actual file.
+> **How to resume:** Say "pickup portfolio.md". Claude should: (1) read this whole file, (2) `Read` the current `index.html` to confirm it matches what's described here, (3) open it with `open index.html`, (4) give Danielle a plain-language summary of what was last done and where things stand, and (5) end with a **TO DO** section listing anything left incomplete — even if that list is empty, say so explicitly.
+
+## Git status (check before assuming anything is live)
+Last known state: pushed to `origin/main` via `git push --force-with-lease` on 2026-09-24 (commit `1f0f8fa`), after reconciling a diverged remote commit (see below). Always run `git status`/`git log` to confirm this is still accurate — don't trust this line blindly if time has passed.
 
 **Repo:** `/Users/daniellenaidu/Documents/danielle-portfolio` (git remote: `damn-dani/danielle-portfolio` on GitHub)
 **Live site:** https://damn-dani.github.io/danielle-portfolio/ — **NOT yet updated**, all work below is local only, not committed/pushed.
@@ -32,10 +35,13 @@ Danielle got a new job — **Editorial & Marketing Coordinator, 1105 Media** (co
 - **Four publications:** shown as colorful stamp-style badges (`.badge.badge-1/2/3/4`, orange/teal/gold/brick-red) — used both in the strip under the hero AND as the outlet headers inside Published Work, for visual consistency.
   - **Note:** could not find downloadable/reusable logo image files on the actual publication sites (they use styled text mastheads, not logo images) — used the colored text badges instead of real logos to avoid any trademark-reuse ambiguity. Danielle was told this; she may still want real logos revisited later if she can source the actual files herself.
 
-## Still open / not yet done
-1. **Not committed or pushed to git.** Danielle has not yet confirmed whether to push — ask before pushing (it updates the live public site). There are also several untracked files sitting in the repo (extra PDFs/PNGs, `.DS_Store`) unrelated to this task — leave them alone unless asked.
-2. Real publication logos — currently using colored text badges as a stand-in (see note above).
-3. One earlier oddity: `git status`/`git log` hung for 2+ minutes once mid-session, then worked fine on retry. Not investigated further — if it recurs, just retry rather than assuming something is broken.
+## History note — a real conflict happened here, resolved 2026-09-24
+Before the 2026-09-24 push, `origin/main` had a July 21, 2026 commit (`7c81180`) that was never merged into this session's working copy — it added a **"Five Brands" spec-copywriting section** and a **GoVocal/CitizenLab internship + testimonial** in the Background timeline, plus a nav-overflow fix. Danielle decided: **restore the GoVocal internship** (done — it's now in the timeline with its testimonial) and **drop the spec-copywriting section** (real bylines now do that job instead). Local history was then force-pushed over the remote's diverged commit. If anything else from that old commit turns out to be missing and wanted, it's recoverable via `git show 7c81180:index.html` even after the force-push (it's still in GitHub's reflog/network for a while).
+
+## TO DO
+1. Real publication logos — still using colored text badges as a stand-in, not actual logo image files (see note above). Revisit if Danielle sources the real logo files herself.
+2. There are several untracked files sitting in the repo (extra PDFs/PNGs, `.DS_Store`, `.scratch/`) unrelated to this task — left alone, not part of git. Ask before touching them.
+3. One earlier oddity: `git status`/`git fetch` hung for 1-2 minutes a couple of times mid-session, then worked fine on retry. Not investigated further — if it recurs, just retry rather than assuming something is broken.
 
 ## How to verify changes visually (headless screenshot gotchas)
 The site uses scroll-triggered reveal animations (`.r` class, IntersectionObserver) that a plain headless screenshot won't trigger. To preview:
